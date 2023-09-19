@@ -13,12 +13,12 @@ request.get(url, (err, response, body) => {
 
   data.forEach(task => {
     const userId = task.userId;
-    if (!todos[userId]) {
-      todos[userId] = 0;
-    }
-
     if (task.completed) {
-      todos[userId]++;
+      if (!todos[userId]) {
+        todos[userId] = 1;
+      } else {
+        todos[userId]++;
+      }
     }
   });
   console.log(todos);
